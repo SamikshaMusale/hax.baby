@@ -1,0 +1,562 @@
+/* ==========================================================================
+   PROJECTS SECTION — PIP'S MIDNIGHT DREAM LAB
+   ========================================================================== */
+
+.projects-section {
+  padding: 88px 0 108px;
+  position: relative;
+  z-index: 10;
+  scroll-margin-top: 40px;
+}
+
+.projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ==========================================================================
+   SECTION HEADER
+   ========================================================================== */
+
+.projects-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.projects-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), var(--color-blush-subtle));
+  border: 1.5px solid var(--color-blush);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-berry);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.eyebrow-sparkle {
+  color: var(--color-amber);
+  font-size: 12px;
+}
+
+.projects-title {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  color: var(--color-brown);
+  margin: 0;
+}
+
+.projects-lead {
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.7;
+  color: var(--color-brown-muted);
+  max-width: 620px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   PROJECTS GRID & CARDS
+   ========================================================================== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+.project-card {
+  background: var(--color-surface-translucent);
+  border: 1.5px solid var(--color-border-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.4s ease;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-pop);
+  border-color: var(--color-berry);
+}
+
+/* Media preview stage */
+.project-media-wrap {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(180deg, var(--color-cream-soft) 0%, var(--color-berry-soft) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  border-bottom: 1px dashed var(--color-border-dashed);
+}
+
+.project-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 16px rgba(163, 64, 99, 0.12));
+  transition: transform 0.35s ease;
+  user-select: none;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+/* Route SVG Stage */
+.route-illustration-stage {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.route-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.flight-path {
+  stroke-dashoffset: 0;
+  animation: path-dash 20s linear infinite;
+}
+
+@keyframes path-dash {
+  to {
+    stroke-dashoffset: -100;
+  }
+}
+
+/* Project Category Badge */
+.project-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--color-surface-pure);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-brown);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.badge-icon {
+  font-size: 12px;
+}
+
+/* Card Body */
+.project-body {
+  padding: 26px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+}
+
+.project-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-brown);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.project-description {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-brown-muted);
+  flex: 1;
+  margin: 0;
+}
+
+/* Card Footer with "Peek inside" Button */
+.project-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(163, 64, 99, 0.08);
+}
+
+.peek-inside-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 20px;
+  background: var(--color-berry-soft);
+  color: var(--color-berry);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  border: 1.5px solid rgba(163, 64, 99, 0.25);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  min-height: 44px;
+}
+
+.peek-inside-btn:hover {
+  background: var(--color-berry);
+  color: #fff8f1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(163, 64, 99, 0.25);
+}
+
+.peek-inside-btn:active {
+  transform: translateY(0);
+}
+
+.btn-sparkle {
+  color: var(--color-amber);
+  transition: transform 0.25s ease;
+}
+
+.peek-inside-btn:hover .btn-sparkle {
+  transform: rotate(45deg) scale(1.2);
+  color: #fff;
+}
+
+/* Card Feature Hint */
+.card-feature-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-berry);
+  background: var(--color-berry-soft);
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-card);
+  user-select: none;
+}
+
+.card-feature-hint .hint-icon {
+  font-size: 12px;
+}
+
+/* Interactive Features in Modal */
+.modal-interactive-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   DETAIL MODAL
+   ========================================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 31, 51, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: var(--color-surface-pure);
+  background: var(--color-surface-pure);
+  opacity: 1;
+  border: 2px solid var(--color-border-card);
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  padding: 32px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  z-index: 10000;
+  animation: modalEnter 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  background: var(--color-berry-soft);
+  color: var(--color-berry);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.modal-close-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-berry-soft);
+  border: 1px solid var(--color-border-card);
+  border-radius: 50%;
+  color: var(--color-brown);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: var(--color-berry);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 3.5vw, 32px);
+  font-weight: 600;
+  color: var(--color-brown);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.modal-lead-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-brown);
+  margin: 0;
+}
+
+/* Modal Preview Frame */
+.modal-preview-frame {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, var(--color-cream-soft), var(--color-berry-soft));
+  border: 1.5px dashed var(--color-border-dashed);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.modal-preview-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(163, 64, 99, 0.15));
+}
+
+.modal-preview-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-brown-muted);
+}
+
+.preview-note-star {
+  color: var(--color-amber);
+}
+
+/* Pip's Field Notes Box */
+.modal-notes-box {
+  background: var(--color-surface-translucent);
+  border: 1.5px solid var(--color-border-card);
+  border-radius: 18px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background-color 0.4s ease;
+}
+
+.notes-box-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-berry);
+  margin: 0;
+}
+
+.notes-item {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--color-brown);
+}
+
+.notes-item strong {
+  color: var(--color-brown);
+  font-family: var(--font-display);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.notes-item p {
+  color: var(--color-brown-muted);
+  margin: 0;
+}
+
+.nursery-verdict {
+  background: rgba(254, 243, 199, 0.5);
+  border-radius: 10px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--color-amber);
+}
+
+/* Modal Footer */
+.modal-footer {
+  margin-top: 4px;
+}
+
+.modal-dismiss-btn {
+  width: 100%;
+  padding: 13px 20px;
+  background: var(--color-berry);
+  color: #fff8f1;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 46px;
+}
+
+.modal-dismiss-btn:hover {
+  background: var(--color-berry-deep);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Span the third card nicely across on 2-col layout */
+  .card-dream-delivery-routes {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 720px) {
+  .projects-section {
+    padding: 60px 0 80px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .card-dream-delivery-routes {
+    grid-column: span 1;
+  }
+
+  .modal-card {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-header {
+    gap: 12px;
+  }
+
+  .projects-title {
+    font-size: 30px;
+  }
+
+  .projects-lead {
+    font-size: 15px;
+  }
+
+  .project-media-wrap {
+    height: 200px;
+  }
+}

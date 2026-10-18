@@ -1,0 +1,508 @@
+/* ==========================================================================
+   PIP'S ORIGIN STORY — BEDTIME STORY CHAPTERS
+   ========================================================================== */
+
+.story-section {
+  padding: 100px 0 120px;
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(255, 248, 241, 0) 0%, rgba(255, 240, 245, 0.45) 50%, rgba(255, 248, 241, 0) 100%);
+  border-top: 1px dashed rgba(163, 64, 99, 0.18);
+  scroll-margin-top: 40px;
+}
+
+.story-container {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  position: relative;
+}
+
+/* ==========================================================================
+   SECTION HEADER & CHAPTER NAV
+   ========================================================================== */
+
+.story-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+.story-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), var(--color-blush-subtle));
+  border: 1.5px solid var(--color-blush);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-berry);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.story-title {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 4.5vw, 54px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  color: var(--color-brown);
+  margin: 0;
+}
+
+.story-lead {
+  font-size: clamp(16px, 1.8vw, 18px);
+  line-height: 1.7;
+  color: var(--color-brown-muted);
+  max-width: 640px;
+  margin: 0;
+}
+
+.story-nav-ribbon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+  background: var(--color-surface-translucent);
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--color-border-card);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.ribbon-step-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-pill);
+  color: var(--color-brown-muted);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ribbon-step-btn:hover {
+  background: var(--color-berry-soft);
+  color: var(--color-berry);
+  transform: translateY(-1px);
+}
+
+.ribbon-step-btn.is-active {
+  background: var(--color-berry);
+  color: #fff8f1;
+  border-color: #842e4c;
+  box-shadow: 0 4px 14px rgba(163, 64, 99, 0.25);
+  transform: translateY(-1px);
+}
+
+.ribbon-step-icon {
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   VERTICAL STAR TRAIL TIMELINE (SCOPED TO CHAPTERS FLOW)
+   ========================================================================== */
+
+.story-track-spine {
+  position: absolute;
+  top: 80px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: rgba(163, 64, 99, 0.15);
+  border-radius: var(--radius-pill);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.story-track-progress {
+  width: 100%;
+  background: linear-gradient(180deg, var(--color-berry) 0%, var(--color-amber) 100%);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 10px rgba(232, 149, 40, 0.45);
+  transition: height 0.4s ease-out;
+}
+
+.spine-star-cap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  color: var(--color-amber);
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(232, 149, 40, 0.5);
+}
+
+.spine-star-cap.top-cap {
+  top: -18px;
+}
+
+.spine-star-cap.bottom-cap {
+  bottom: -18px;
+}
+
+/* ==========================================================================
+   STORY CHAPTERS FLOW
+   ========================================================================== */
+
+.story-chapters-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 90px;
+  position: relative;
+  z-index: 3;
+}
+
+.story-chapter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 56px;
+  position: relative;
+  z-index: 2;
+  opacity: 0.2;
+  transform: translateY(32px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-chapter.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternating layout for even chapters */
+.story-chapter.chapter-reversed {
+  direction: rtl;
+}
+
+.story-chapter.chapter-reversed > * {
+  direction: ltr;
+}
+
+/* ==========================================================================
+   PICTUREBOOK ILLUSTRATION FRAME
+   ========================================================================== */
+
+.chapter-art-column {
+  display: flex;
+  justify-content: center;
+}
+
+.picturebook-frame {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  border-radius: var(--radius-card);
+  padding: 14px;
+  background: var(--color-surface-pure);
+  border: 2px solid var(--color-border-card);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(92, 64, 51, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background-color 0.4s ease, border-color 0.4s ease;
+  overflow: hidden;
+}
+
+.story-chapter:hover .picturebook-frame {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.22), 0 4px 14px rgba(92, 64, 51, 0.06);
+}
+
+.chapter-illustration {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: calc(var(--radius-card) - 8px);
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Corner Star Accents */
+.frame-corner {
+  position: absolute;
+  font-size: 13px;
+  color: var(--color-amber);
+  z-index: 5;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.corner-tl { top: 6px; left: 8px; }
+.corner-tr { top: 6px; right: 8px; }
+.corner-bl { bottom: 6px; left: 8px; }
+.corner-br { bottom: 6px; right: 8px; }
+
+/* Chapter Badge on Frame */
+.frame-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--color-surface-pure);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-berry);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.frame-badge-icon {
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   NARRATIVE COLUMN
+   ========================================================================== */
+
+.chapter-narrative-column {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 520px;
+}
+
+.narrative-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 4px 14px;
+  background: var(--color-berry-soft);
+  color: var(--color-berry);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.narrative-tag-star {
+  color: var(--color-amber);
+}
+
+.chapter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 3.2vw, 38px);
+  font-weight: 600;
+  color: var(--color-brown);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.chapter-lead-text {
+  font-size: clamp(17px, 1.9vw, 19px);
+  line-height: 1.65;
+  color: var(--color-berry-deep);
+  font-weight: 500;
+  margin: 0;
+}
+
+.chapter-detail-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-brown-muted);
+  margin: 0;
+}
+
+.chapter-footer-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(163, 64, 99, 0.18);
+  font-size: 12px;
+  color: var(--color-brown-faint);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.stamp-icon {
+  font-size: 13px;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .story-track-spine {
+    display: none;
+  }
+
+  .story-chapter {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    direction: ltr !important;
+  }
+
+  .story-chapter.chapter-reversed {
+    direction: ltr !important;
+  }
+
+  .story-chapters-flow {
+    gap: 64px;
+  }
+
+  .chapter-art-column {
+    order: -1;
+  }
+
+  .picturebook-frame {
+    max-width: 480px;
+  }
+
+  .chapter-narrative-column {
+    max-width: 100%;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .story-section {
+    padding: 60px 0 80px;
+  }
+
+  .story-container {
+    gap: 40px;
+  }
+
+  .story-title {
+    font-size: 28px;
+  }
+
+  .story-lead {
+    font-size: 15px;
+  }
+
+  .picturebook-frame {
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .chapter-illustration {
+    border-radius: 14px;
+  }
+
+  .chapter-title {
+    font-size: 24px;
+  }
+
+  .chapter-lead-text {
+    font-size: 16px;
+  }
+
+  .chapter-detail-text {
+    font-size: 14px;
+  }
+
+  .story-nav-ribbon {
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .ribbon-step-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .frame-badge {
+    bottom: 16px;
+    left: 16px;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+}
+
+/* ==========================================================================
+   CHAPTER 04 FLIGHT MAP WRAPPER
+   ========================================================================== */
+
+.story-flight-map-section {
+  width: 100%;
+  margin-top: 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  z-index: 5;
+}
+
+.flight-map-header-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--color-surface-pure);
+  border: 1.5px dashed var(--color-border-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.flight-note-pin {
+  font-size: 24px;
+}
+
+.flight-map-heading {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-berry);
+  margin: 0;
+}
+
+.flight-map-caption {
+  font-size: 13px;
+  color: var(--color-brown-muted);
+  margin: 2px 0 0 0;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .story-chapter {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .picturebook-frame {
+    transition: none !important;
+  }
+
+  .story-track-progress {
+    transition: none !important;
+  }
+
+  .ribbon-step-btn {
+    transition: none !important;
+  }
+}

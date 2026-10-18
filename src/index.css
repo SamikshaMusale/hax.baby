@@ -1,0 +1,190 @@
+/* ==========================================================================
+   PIP'S MIDNIGHT DREAM LAB — Core Design System & Tokens
+   haX.baby "Baby's First Website" Hackathon · Track 1: Pip, the Skull Baby
+   ========================================================================== */
+
+:root {
+  /* DAY MODE (Default Palette) */
+  --color-cream: #fff8f1;
+  --color-cream-soft: #fcf4ea;
+  --color-cream-card: rgba(255, 252, 248, 0.92);
+  --color-berry: #a34063;
+  --color-berry-deep: #7e2a48;
+  --color-berry-light: #c2537b;
+  --color-berry-soft: #fff0f4;
+  --color-blush: #ffccd8;
+  --color-blush-subtle: #fff4f7;
+  --color-brown: #5c4033;
+  --color-brown-muted: #7d5e4f;
+  --color-brown-faint: #a6897c;
+  --color-amber: #e89528;
+  --color-amber-soft: #fef3c7;
+  --color-lavender-soft: #f5edfa;
+
+  /* Surfaces & Structural Tokens */
+  --color-surface-pure: #fffcf8;
+  --color-surface-translucent: rgba(255, 255, 255, 0.92);
+  --color-header-bg: rgba(255, 248, 241, 0.82);
+  --color-footer-bg: rgba(255, 248, 241, 0.88);
+  --color-border-card: rgba(163, 64, 99, 0.16);
+  --color-border-dashed: rgba(163, 64, 99, 0.22);
+
+  /* Typography */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-display: 'Fredoka', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Elevations & Glows */
+  --shadow-sm: 0 2px 8px rgba(92, 64, 51, 0.05);
+  --shadow-card: 0 8px 30px rgba(163, 64, 99, 0.08), 0 2px 8px rgba(92, 64, 51, 0.04);
+  --shadow-pop: 0 14px 40px rgba(163, 64, 99, 0.14), 0 4px 12px rgba(92, 64, 51, 0.06);
+  --shadow-glow: 0 0 45px rgba(255, 204, 216, 0.5), 0 0 90px rgba(254, 243, 199, 0.35);
+
+  /* Borders & Radii */
+  --border-cozy: 1.5px solid rgba(163, 64, 99, 0.15);
+  --border-dashed-style: 2px dashed rgba(163, 64, 99, 0.25);
+  --radius-pill: 9999px;
+  --radius-card: 28px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+}
+
+/* ==========================================================================
+   NIGHT MODE (Deep Indigo & Plum Moonlit Nursery)
+   ========================================================================== */
+[data-theme="night"] {
+  --color-cream: #181122;
+  --color-cream-soft: #221830;
+  --color-cream-card: rgba(36, 25, 48, 0.94);
+  --color-berry: #df6890;
+  --color-berry-deep: #f28ab0;
+  --color-berry-light: #f7a6c2;
+  --color-berry-soft: rgba(223, 104, 144, 0.18);
+  --color-blush: #753b5c;
+  --color-blush-subtle: rgba(117, 59, 92, 0.28);
+  --color-brown: #fff8f1;
+  --color-brown-muted: #d9c8bd;
+  --color-brown-faint: #ad9a90;
+  --color-amber: #fbbf24;
+  --color-amber-soft: rgba(251, 191, 36, 0.18);
+  --color-lavender-soft: #2d1f3d;
+
+  --color-surface-pure: #231832;
+  --color-surface-translucent: rgba(36, 25, 48, 0.94);
+  --color-header-bg: rgba(24, 17, 34, 0.88);
+  --color-footer-bg: rgba(24, 17, 34, 0.92);
+  --color-border-card: rgba(223, 104, 144, 0.26);
+  --color-border-dashed: rgba(223, 104, 144, 0.36);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-pop: 0 14px 40px rgba(0, 0, 0, 0.65), 0 4px 12px rgba(223, 104, 144, 0.2);
+  --shadow-glow: 0 0 50px rgba(223, 104, 144, 0.35), 0 0 100px rgba(251, 191, 36, 0.22);
+}
+
+/* CSS Reset & Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-cream);
+  /* Tactile cozy dream paper background with subtle stardust grid */
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 204, 216, 0.4) 0%, transparent 45%),
+    radial-gradient(circle at 88% 22%, rgba(254, 243, 199, 0.5) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(245, 237, 250, 0.4) 0%, transparent 50%),
+    radial-gradient(rgba(163, 64, 99, 0.055) 1.2px, transparent 1.2px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  background-attachment: fixed;
+  color: var(--color-brown);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+[data-theme="night"] body {
+  background-color: var(--color-cream);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(223, 104, 144, 0.2) 0%, transparent 45%),
+    radial-gradient(circle at 88% 22%, rgba(251, 191, 36, 0.22) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(117, 59, 92, 0.25) 0%, transparent 50%),
+    radial-gradient(rgba(255, 248, 241, 0.07) 1.2px, transparent 1.2px);
+}
+
+/* Accessible Skip Link */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  background: var(--color-berry);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 3px solid var(--color-amber);
+}
+
+/* Focus Visible outline for keyboard navigation */
+:focus-visible {
+  outline: 3px solid var(--color-berry);
+  outline-offset: 3px;
+}
+
+/* Container Wrapper */
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Responsive constraints */
+.content-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 640px) {
+  .content-wrap {
+    padding: 0 16px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

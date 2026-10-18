@@ -1,0 +1,79 @@
+/* ==========================================================================
+   FOOTER — COZY EARLY-WEB SIGN-OFF
+   ========================================================================== */
+
+.site-footer {
+  padding: 36px 0 44px;
+  border-top: 1px dashed var(--color-border-dashed);
+  background: var(--color-footer-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.footer-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.footer-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--color-surface-translucent);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  color: var(--color-brown-muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.footer-canon-note {
+  font-size: 13px;
+  color: var(--color-brown-muted);
+}
+
+.footer-canon-note a {
+  color: var(--color-berry);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-craft-note {
+  font-size: 12px;
+  color: var(--color-brown-faint);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.color-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(92, 64, 51, 0.2);
+}
+
+.cream-dot {
+  background-color: #fff8f1;
+}
+
+.berry-dot {
+  background-color: #a34063;
+}
